@@ -1,0 +1,3 @@
+- [ ] Modify scanTrayEgg function to convert selected file to base64 and store in localStorage as 'uploadedBatchImage'
+- [ ] Modify predictTrayQuality function to store prediction result in localStorage as 'batchResults'
+- [ ] Modify displayBatchResults function to redirect to batch-results.html after alert(message);
