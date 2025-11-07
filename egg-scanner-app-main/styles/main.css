@@ -394,6 +394,11 @@ p {
     text-align: center;
     transition: all var(--transition-normal);
 }
+.warning-text {
+    text-align: center;
+    color: red;
+    font-weight: bold;
+}
 
 .upload-area:hover {
     border-color: var(--accent-orange);

@@ -36,14 +36,11 @@
                 <div class="hero-content">
                     <div class="hero-left">
                         <h1 class="hero-title">
-                            Fresh <span class="text-yellow">Eggs</span>, the<br>
-                            Better
+                            Your pocket <span class="text-yellow">Egg</span>-spert in <br>
+                            Freshness
                         </h1>
                         <p class="hero-description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Meet your kitchen’s new best friend! This AI-powered tool scans your eggs and tells you if they’re fresh, No more egg-speriments gone wrong.
                         </p>
                         <!-- <a href="#upload-section" class="btn btn-red hero-cta">SCAN YOUR EGGS HERE</a>
                         <p class="click-here">Click here!</p> -->
@@ -304,21 +301,24 @@
 
         // Load uploaded image and results
         document.addEventListener('DOMContentLoaded', function () {
-            // Load the resized image from localStorage
-            const uploadedImageData = localStorage.getItem('uploadedBatchImage');
-            if (uploadedImageData) {
-                document.getElementById('scannedImage').src = uploadedImageData;
-            } else {
-                // Fallback to placeholder if no image data
-                document.getElementById('scannedImage').src =
-                    'https://via.placeholder.com/600x400/FFC107/000000?text=Batch+Eggs+Scan+Result';
-            }
-
             // Load batch results and display them
             const batchResults = localStorage.getItem('batchResults');
             if (batchResults) {
                 const data = JSON.parse(batchResults);
                 displayBatchResults(data);
+
+                // Use the annotated image from the results
+                if (data.annotated_image) {
+                    document.getElementById('scannedImage').src = 'data:image/jpeg;base64,' + data.annotated_image;
+                } else {
+                    // Fallback to placeholder if no annotated image
+                    document.getElementById('scannedImage').src =
+                        'https://via.placeholder.com/600x400/FFC107/000000?text=Batch+Eggs+Scan+Result';
+                }
+            } else {
+                // Fallback if no batch results
+                document.getElementById('scannedImage').src =
+                    'https://via.placeholder.com/600x400/FFC107/000000?text=Batch+Eggs+Scan+Result';
             }
         });
 

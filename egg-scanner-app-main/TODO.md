@@ -1,3 +1,4 @@
-- [ ] Modify scanTrayEgg function to convert selected file to base64 and store in localStorage as 'uploadedBatchImage'
-- [ ] Modify predictTrayQuality function to store prediction result in localStorage as 'batchResults'
-- [ ] Modify displayBatchResults function to redirect to batch-results.html after alert(message);
+# TODO: Hide btn btn-orange browse-btn
+
+- [x] Hide the browse-btn in the scanEgg() function during scanning
+- [x] Show the browse-btn in the displayResults() function after scanning completes

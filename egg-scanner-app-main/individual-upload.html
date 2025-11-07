@@ -36,14 +36,11 @@
                 <div class="hero-content">
                     <div class="hero-left">
                         <h1 class="hero-title">
-                            Fresh <span class="text-yellow">Eggs</span>, the<br>
-                            Better
+                            Your pocket <span class="text-yellow">Egg</span>-spert in <br>
+                            Freshness
                         </h1>
                         <p class="hero-description">
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-                            laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Meet your kitchen’s new best friend! This AI-powered tool scans your eggs and tells you if they’re fresh, No more egg-speriments gone wrong.
                         </p>
                         <!--
                         <a href="#upload-section" class="btn btn-red hero-cta">SCAN YOUR EGGS HERE</a>
@@ -110,6 +107,9 @@
                         <button class="btn btn-orange browse-btn"
                             onclick="browseFile()">BROWSE FILE</button>
                         <input type="file" id="fileInput" accept="image/*" style="display: none;">
+                        <div class="warning-text">
+                            <p>Upload one egg image for individual analysis</p>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -274,13 +274,14 @@
 
         // Function to display prediction results
         function displayResults(result) {
-            
+
             localStorage.setItem('eggQualityResults', JSON.stringify(result));
-            
-            // Re-enable the button
+
+            // Re-enable the buttons
             const scanBtn = document.querySelector('.scan-btn');
             scanBtn.disabled = false;
             scanBtn.innerHTML = 'SCAN YOUR EGGS NOW!<span class="arrow">→</span>';
+
             // Navigate to results page
             window.location.href = 'individual-results.html';
         }
@@ -304,7 +305,11 @@
                 alert('Please select an image first!');
                 return;
             }
+            //Hide btn btn-orange browse-btn
+            const browseBtn = document.querySelector('.browse-btn');
+            browseBtn.style.display = 'none';
 
+            
             // Show loading or disable button
             const scanBtn = document.querySelector('.scan-btn');
             scanBtn.disabled = true;
